@@ -37,6 +37,8 @@ const EmbersBg = (() => {
   };
 
   function init() {
+    if (window.innerWidth < 768) return;
+
     canvas = document.getElementById('embers-canvas');
     if (!canvas) return;
 

@@ -371,6 +371,148 @@
     font-size: 0.85rem;
     gap: 0.5rem;
   }
+
+  /* ================================================
+     MOBILE PERFORMANCE MODE — Heavy CSS optimization
+     ================================================ */
+
+  /* --- Backdrop-filter: GPU-expensive on mobile --- */
+  .nav {
+    backdrop-filter: blur(12px) saturate(1.2);
+    -webkit-backdrop-filter: blur(12px) saturate(1.2);
+  }
+
+  .mobile-menu {
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+  }
+
+  .carousel__card {
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+  }
+
+  .carousel__arrow {
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+  }
+
+  /* --- Reduce heavy box-shadows --- */
+  .carousel__slide--active .carousel__card {
+    box-shadow:
+      0 20px 60px rgba(0, 0, 0, 0.5),
+      inset 0 1px 0 rgba(var(--c-copper-rgb), 0.08);
+  }
+
+  .carousel__mockup {
+    box-shadow:
+      0 6px 24px rgba(0, 0, 0, 0.35),
+      0 0 0 1px rgba(var(--c-copper-rgb), 0.08);
+  }
+
+  .poster {
+    filter: drop-shadow(0 15px 30px rgba(0, 0, 0, 0.4));
+  }
+
+  /* --- Disable hover transforms on touch --- */
+  .stat:hover,
+  .cert:hover,
+  .marquee__item:hover,
+  .btn:hover,
+  .btn--icon:hover,
+  .footer__social:hover,
+  .carousel__arrow:hover,
+  .carousel__link:hover {
+    transform: none;
+  }
+
+  .stat:hover,
+  .cert:hover,
+  .marquee__item:hover {
+    box-shadow: none;
+  }
+
+  .btn:hover {
+    box-shadow: none;
+  }
+
+  /* --- Remove expensive will-change on reveals --- */
+  .poster,
+  .hero__eyebrow,
+  .hero__name-line,
+  .hero__role,
+  .hero__desc,
+  .hero__actions,
+  [data-reveal-slide-left],
+  [data-reveal-slide-right],
+  [data-reveal-fade-up],
+  [data-reveal-project],
+  [data-reveal-paper],
+  [data-reveal-soft],
+  [data-reveal-head] {
+    will-change: auto;
+  }
+
+  /* --- Reduce section-transition glow --- */
+  .section-transition__glow {
+    filter: blur(16px);
+  }
+
+  /* --- Carousel bg orbs: reduce blur --- */
+  .carousel__bg-orb {
+    filter: blur(60px);
+  }
+
+  /* --- Hero ambient glow: lighter --- */
+  .hero__visual::before {
+    filter: blur(30px);
+  }
+
+  /* --- Reduce marquee transition complexity --- */
+  .marquee__item {
+    transition: border-color 0.3s ease, background 0.3s ease;
+  }
+
+  /* --- Disable poster highlight layer --- */
+  .poster__highlight {
+    display: none;
+  }
+
+  /* --- Reduce env dust animation --- */
+  .env__dust {
+    animation-duration: 90s;
+  }
+
+  .env__sand {
+    animation-duration: 70s;
+  }
+
+  .env__fog--1,
+  .env__fog--2 {
+    animation: none;
+  }
+
+  /* --- Disable grain animation (static overlay is fine) --- */
+  .grain {
+    animation: none;
+  }
+
+  /* --- Carousel transition speed: faster on mobile --- */
+  .carousel__mockup {
+    transition: none;
+  }
+
+  /* --- Reduce text-shadow complexity --- */
+  .hero__name,
+  .section__title,
+  .carousel__title,
+  .carousel__name {
+    text-shadow: none;
+  }
+
+  .stat__num {
+    text-shadow: none;
+  }
 }
 
 /* ================================================
@@ -737,7 +879,8 @@
 
   /* --- AMBIENT --- */
   .hero__ambient--1,
-  .hero__ambient--2 {
+  .hero__ambient--2,
+  .grain {
     display: none;
   }
 

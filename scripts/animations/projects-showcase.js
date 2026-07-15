@@ -39,6 +39,7 @@ const ProjectsShowcase = (() => {
     if (totalSlides === 0) return;
 
     reducedMotion = Helpers.isReducedMotion();
+    const isMobile = Helpers.isMobile();
 
     slideEls.forEach((el, i) => {
       slides.push({
@@ -165,12 +166,13 @@ const ProjectsShowcase = (() => {
     const enterRotateY = direction === 'next' ? 4 : -4;
 
     // Ensure incoming slide is in its starting position (hidden)
+    const mobileBlur = Helpers.isMobile() ? 'blur(0px)' : 'blur(4px)';
     gsap.set(inEl, {
       opacity: 0,
       x: enterFromX,
       scale: 0.88,
       rotateY: enterRotateY,
-      filter: 'blur(4px)',
+      filter: mobileBlur,
       pointerEvents: 'none',
     });
 
@@ -178,12 +180,13 @@ const ProjectsShowcase = (() => {
     const ease = 'power3.inOut';
 
     // Animate outgoing slide
+    const mobileBlurOut = Helpers.isMobile() ? 'blur(0px)' : 'blur(4px)';
     gsap.to(outEl, {
       x: exitX,
       scale: 0.88,
       rotateY: exitRotateY,
       opacity: 0,
-      filter: 'blur(4px)',
+      filter: mobileBlurOut,
       duration: dur,
       ease,
       overwrite: true,
@@ -354,6 +357,7 @@ const ProjectsShowcase = (() => {
      ----------------------------------------------- */
   function animateLoop() {
     if (!active) return;
+    if (!Helpers.isHoverCapable()) return;
     applyMouseTilt();
     rafId = requestAnimationFrame(animateLoop);
   }

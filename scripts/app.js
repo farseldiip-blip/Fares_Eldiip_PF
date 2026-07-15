@@ -38,11 +38,14 @@ const App = (() => {
 
       await Loader.init();
 
+      document.getElementById('navbar')?.classList.add('nav--entered');
       SmoothScroll.start();
 
-      document.querySelectorAll('.ambient-orb').forEach(orb => {
-        orb.classList.add('ambient-orb--visible');
-      });
+      if (!Helpers.isMobile()) {
+        document.querySelectorAll('.ambient-orb').forEach(orb => {
+          orb.classList.add('ambient-orb--visible');
+        });
+      }
 
       HeroAnim.animateIn();
 

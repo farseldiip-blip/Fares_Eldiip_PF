@@ -319,7 +319,7 @@ const HeroAnim = (() => {
 
     const ctx = canvas.getContext('2d');
     const particles = [];
-    const COUNT = 45;
+    const COUNT = Helpers.isMobile() ? 12 : 45;
 
     function resize() {
       Helpers.setupCanvas(canvas, ctx);
@@ -346,8 +346,11 @@ const HeroAnim = (() => {
 
     function draw() {
       if (!particlesActive) return;
+      if (!heroVisible) {
+        requestAnimationFrame(draw);
+        return;
+      }
       requestAnimationFrame(draw);
-      if (!heroVisible) return;
 
       const w = window.innerWidth;
       const h = window.innerHeight;

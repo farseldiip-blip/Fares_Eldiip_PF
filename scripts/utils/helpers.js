@@ -11,6 +11,11 @@ const Helpers = (() => {
     return matchMedia('(prefers-reduced-motion: reduce)').matches;
   }
 
+  const _isMobile = window.innerWidth <= 768 || ('ontouchstart' in window && window.innerWidth <= 1024);
+  function isMobile() {
+    return _isMobile;
+  }
+
   function setupCanvas(canvas, ctx) {
     const dpr = Math.min(window.devicePixelRatio || 1, 2);
     canvas.width = window.innerWidth * dpr;
@@ -20,5 +25,5 @@ const Helpers = (() => {
     ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
   }
 
-  return { isHoverCapable, isReducedMotion, setupCanvas };
+  return { isHoverCapable, isReducedMotion, isMobile, setupCanvas };
 })();

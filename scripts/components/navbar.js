@@ -10,12 +10,17 @@ const Navbar = (() => {
   const SCROLL_SHOW_THRESHOLD = 80;
   const SCROLL_OFFSET = -72;
 
+  let cachedSections = null;
+  let rafPending = false;
+
   function init() {
     nav = document.getElementById('navbar');
     burger = document.querySelector('.nav__burger');
     mobileMenu = document.getElementById('mobile-menu');
     links = document.querySelectorAll('.nav__link');
     if (!nav) return;
+
+    cachedSections = document.querySelectorAll('section[id]');
 
     if (burger) {
       const onBurgerClick = () => toggleMenu();
@@ -51,11 +56,16 @@ const Navbar = (() => {
   }
 
   function onScrollHandler() {
-    requestAnimationFrame(updateActiveLink);
+    if (rafPending) return;
+    rafPending = true;
+    requestAnimationFrame(() => {
+      rafPending = false;
+      updateActiveLink();
+    });
   }
 
   function updateActiveLink() {
-    const sections = document.querySelectorAll('section[id]');
+    const sections = cachedSections || document.querySelectorAll('section[id]');
     let current = '';
 
     sections.forEach(section => {

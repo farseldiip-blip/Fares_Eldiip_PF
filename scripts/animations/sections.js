@@ -27,6 +27,13 @@ const SectionAnim = (() => {
   const HERO_TEXT_FADE = 0.85;
   const HERO_POSTER_FADE = 0.75;
 
+  const isMobile = Helpers.isMobile();
+  const BLUR_MOBILE = 0;
+  const BLUR_DESKTOP_HEAD = 2;
+  const BLUR_DESKTOP_PROJECT = 3;
+  const BLUR_DESKTOP_ABOUT = 2;
+  const BLUR_DESKTOP_CONTACT = 1.5;
+
   function init() {
     if (destroyed) return;
     if (typeof gsap === 'undefined' || typeof ScrollTrigger === 'undefined') {
@@ -80,7 +87,7 @@ const SectionAnim = (() => {
       /* Children get their own hidden states via GSAP.
          Parent stays hidden by CSS [data-reveal-head] until timeline fires. */
       if (idx) gsap.set(idx, { opacity: 0, x: -20 });
-      if (title) gsap.set(title, { opacity: 0, y: 25, filter: 'blur(2px)' });
+      if (title) gsap.set(title, { opacity: 0, y: 25, filter: isMobile ? 'none' : `blur(${BLUR_DESKTOP_HEAD}px)` });
       if (rule) gsap.set(rule, { scaleX: 0, transformOrigin: 'center' });
 
       const tl = gsap.timeline({
@@ -114,9 +121,9 @@ const SectionAnim = (() => {
     const counter = header.querySelector('.carousel__counter');
     const progress = header.querySelector('.carousel__progress');
 
-    gsap.set(header, { opacity: 0, y: 30, rotateX: 5, transformPerspective: 800, filter: 'blur(3px)' });
+    gsap.set(header, { opacity: 0, y: 30, rotateX: isMobile ? 0 : 5, transformPerspective: 800, filter: isMobile ? 'none' : `blur(${BLUR_DESKTOP_PROJECT}px)` });
     if (eyebrow) gsap.set(eyebrow, { opacity: 0, y: -10 });
-    if (title) gsap.set(title, { opacity: 0, y: 20, rotateX: 5, transformPerspective: 800 });
+    if (title) gsap.set(title, { opacity: 0, y: 20, rotateX: isMobile ? 0 : 5, transformPerspective: 800 });
     if (counter) gsap.set(counter, { opacity: 0, x: 10 });
     if (progress) gsap.set(progress, { opacity: 0, scaleX: 0, transformOrigin: 'left' });
 
@@ -178,7 +185,7 @@ const SectionAnim = (() => {
         y: 50,
         scale: 0.94,
         rotate: rotations[i % rotations.length],
-        filter: 'blur(3px)',
+        filter: isMobile ? 'none' : 'blur(3px)',
       });
 
       const st = ScrollTrigger.create({
@@ -213,10 +220,10 @@ const SectionAnim = (() => {
     if (journal) {
       gsap.set(journal, {
         opacity: 0,
-        x: -60,
-        rotateY: 4,
+        x: isMobile ? -30 : -60,
+        rotateY: isMobile ? 0 : 4,
         transformPerspective: 800,
-        filter: 'blur(2px)',
+        filter: isMobile ? 'none' : `blur(${BLUR_DESKTOP_ABOUT}px)`,
       });
 
       const st = ScrollTrigger.create({
@@ -241,8 +248,8 @@ const SectionAnim = (() => {
     stats.forEach((stat, i) => {
       gsap.set(stat, {
         opacity: 0,
-        x: 50,
-        filter: 'blur(2px)',
+        x: isMobile ? 25 : 50,
+        filter: isMobile ? 'none' : `blur(${BLUR_DESKTOP_ABOUT}px)`,
       });
 
       const st = ScrollTrigger.create({
@@ -274,8 +281,8 @@ const SectionAnim = (() => {
     if (info) {
       gsap.set(info, {
         opacity: 0,
-        x: -40,
-        filter: 'blur(1.5px)',
+        x: isMobile ? -20 : -40,
+        filter: isMobile ? 'none' : `blur(${BLUR_DESKTOP_CONTACT}px)`,
       });
 
       const st = ScrollTrigger.create({
@@ -298,8 +305,8 @@ const SectionAnim = (() => {
     if (form) {
       gsap.set(form, {
         opacity: 0,
-        x: 40,
-        filter: 'blur(1.5px)',
+        x: isMobile ? 20 : 40,
+        filter: isMobile ? 'none' : `blur(${BLUR_DESKTOP_CONTACT}px)`,
       });
 
       const st = ScrollTrigger.create({
@@ -363,6 +370,7 @@ const SectionAnim = (() => {
      ----------------------------------------------- */
   function initParallaxElements() {
     if (typeof ScrollTrigger === 'undefined') return;
+    if (isMobile) return;
 
     document.querySelectorAll('.section__head').forEach(head => {
       const st = ScrollTrigger.create({
@@ -398,6 +406,7 @@ const SectionAnim = (() => {
      Hero content and poster move at different rates.
      ----------------------------------------------- */
   function initHeroParallax() {
+    if (isMobile) return;
     const heroText = document.querySelector('.hero__text');
     const heroPoster = document.querySelector('.hero__visual');
     const heroScroll = document.querySelector('.hero__scroll-cue');
