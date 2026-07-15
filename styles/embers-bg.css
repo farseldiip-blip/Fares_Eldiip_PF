@@ -1,0 +1,20 @@
+/* ================================================
+   EMBERS BG — Canvas positioning layer
+   Sits behind all content, never blocks interaction.
+   ================================================ */
+#embers-canvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  pointer-events: none;
+}
+
+/* Reduced motion: dim the canvas significantly */
+@media (prefers-reduced-motion: reduce) {
+  #embers-canvas {
+    opacity: 0.3;
+  }
+}

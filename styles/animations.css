@@ -1,0 +1,350 @@
+/* ================================================
+   ANIMATIONS — Cinematic Reveal System v3
+   GSAP ScrollTrigger-driven, section-specific
+   choreography, GPU-accelerated, 60fps.
+   ================================================ */
+
+/* -----------------------------------------------
+   SHARED — Transition tokens
+   ----------------------------------------------- */
+:root {
+  --reveal-dur:       1000ms;
+  --reveal-dur-fast:  800ms;
+  --reveal-dur-slow:  1200ms;
+}
+
+/* -----------------------------------------------
+   INITIAL HIDDEN STATES
+   CSS sets the starting position. GSAP animates
+   to the visible state. No transitions here.
+   ----------------------------------------------- */
+
+/* --- Hero: poster hidden off-screen right --- */
+.poster {
+  opacity: 0;
+  transform: translateX(120px);
+  filter: blur(10px);
+  will-change: transform, opacity, filter;
+}
+
+/* --- Hero: text content hidden below --- */
+.hero__eyebrow,
+.hero__name-line,
+.hero__role,
+.hero__desc,
+.hero__actions {
+  opacity: 0;
+  transform: translateY(50px);
+  filter: blur(8px);
+  will-change: transform, opacity, filter;
+}
+
+/* --- Hero: scroll cue hidden --- */
+.hero__scroll-cue {
+  opacity: 0;
+}
+
+/* --- About: text slides from left --- */
+[data-reveal-slide-left] {
+  opacity: 0;
+  transform: translateX(-60px) perspective(800px) rotateY(4deg);
+  filter: blur(3px);
+  will-change: transform, opacity, filter;
+}
+
+/* --- About: stats slide from right --- */
+[data-reveal-slide-right] {
+  opacity: 0;
+  transform: translateX(50px);
+  filter: blur(2px);
+  will-change: transform, opacity, filter;
+}
+
+/* --- Skills: header fades upward --- */
+[data-reveal-fade-up] {
+  opacity: 0;
+  transform: translateY(30px);
+  filter: blur(2px);
+  will-change: transform, opacity, filter;
+}
+
+/* --- Projects: header enters with perspective --- */
+[data-reveal-project] {
+  opacity: 0;
+  transform: translateY(30px) perspective(800px) rotateX(5deg);
+  filter: blur(3px);
+  will-change: transform, opacity, filter;
+}
+
+/* --- Certificates: paper placement --- */
+[data-reveal-paper] {
+  opacity: 0;
+  transform: translateY(40px) scale(0.95) rotate(-2deg);
+  filter: blur(3px);
+  will-change: transform, opacity, filter;
+}
+
+/* --- Contact: soft entrance --- */
+[data-reveal-soft] {
+  opacity: 0;
+  transform: translateY(20px);
+  filter: blur(1.5px);
+  will-change: transform, opacity, filter;
+}
+
+/* --- Section heads: fade up --- */
+[data-reveal-head] {
+  opacity: 0;
+  transform: translateY(25px);
+  filter: blur(2px);
+  will-change: transform, opacity, filter;
+}
+
+/* -----------------------------------------------
+   SECTION RULES — Draw from center (hidden initially)
+   ----------------------------------------------- */
+.section__rule {
+  transform: scaleX(0);
+  will-change: transform;
+}
+
+/* -----------------------------------------------
+   SECTION INDEX — Slide in from left (hidden initially)
+   ----------------------------------------------- */
+.section__idx {
+  opacity: 0;
+  transform: translateX(-20px);
+  will-change: transform, opacity;
+}
+
+/* -----------------------------------------------
+   MICRO-INTERACTIONS — Hover & Focus
+   ----------------------------------------------- */
+
+/* --- Stat cards: lift + depth --- */
+.stat {
+  transition:
+    transform 0.5s cubic-bezier(0.23, 1, 0.32, 1),
+    border-color 0.5s cubic-bezier(0.23, 1, 0.32, 1),
+    background 0.5s cubic-bezier(0.23, 1, 0.32, 1),
+    box-shadow 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.stat:hover {
+  border-color: rgba(var(--c-copper-rgb), 0.25);
+  background: rgba(var(--c-copper-rgb), 0.05);
+  transform: translateY(-8px) translateX(4px);
+  box-shadow:
+    0 20px 50px rgba(0, 0, 0, 0.4),
+    0 0 60px rgba(var(--c-copper-rgb), 0.08),
+    inset 0 1px 0 rgba(var(--c-copper-rgb), 0.1);
+}
+
+/* --- Cert cards: paper hover --- */
+.cert {
+  transition:
+    transform 0.5s cubic-bezier(0.23, 1, 0.32, 1),
+    border-color 0.5s cubic-bezier(0.23, 1, 0.32, 1),
+    box-shadow 0.5s cubic-bezier(0.23, 1, 0.32, 1),
+    background 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.cert:hover {
+  border-color: rgba(var(--c-copper-rgb), 0.2);
+  transform: translateY(-6px) scale(1.01);
+  box-shadow:
+    0 24px 60px rgba(0, 0, 0, 0.4),
+    0 0 50px rgba(var(--c-copper-rgb), 0.06),
+    inset 0 1px 0 rgba(var(--c-copper-rgb), 0.12);
+}
+
+/* --- Button hover: elevation --- */
+.btn {
+  transition:
+    color 0.4s cubic-bezier(0.23, 1, 0.32, 1),
+    border-color 0.4s cubic-bezier(0.23, 1, 0.32, 1),
+    background-color 0.4s cubic-bezier(0.23, 1, 0.32, 1),
+    box-shadow 0.5s cubic-bezier(0.23, 1, 0.32, 1),
+    transform 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.btn:hover {
+  transform: translateY(-3px);
+  box-shadow:
+    0 12px 40px rgba(var(--c-copper-rgb), 0.35),
+    0 4px 12px rgba(0, 0, 0, 0.25);
+}
+
+.btn:active {
+  transform: translateY(0) scale(0.97);
+  transition-duration: 0.1s;
+  box-shadow:
+    0 2px 8px rgba(var(--c-copper-rgb), 0.15),
+    0 1px 3px rgba(0, 0, 0, 0.15);
+}
+
+/* --- Social icon buttons: lift on hover --- */
+.btn--icon {
+  transition:
+    background 0.4s cubic-bezier(0.23, 1, 0.32, 1),
+    border-color 0.4s cubic-bezier(0.23, 1, 0.32, 1),
+    color 0.4s cubic-bezier(0.23, 1, 0.32, 1),
+    transform 0.4s cubic-bezier(0.23, 1, 0.32, 1),
+    box-shadow 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.btn--icon:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.35);
+}
+
+.btn--icon:active {
+  transform: translateY(0) scale(0.95);
+  transition-duration: 0.1s;
+}
+
+/* --- Nav link: underline expand --- */
+.nav__link {
+  transition: color 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.nav__link::after {
+  transition: width 0.5s cubic-bezier(0.23, 1, 0.32, 1), left 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+/* --- Marquee items --- */
+.marquee__item {
+  transition:
+    border-color 0.4s cubic-bezier(0.23, 1, 0.32, 1),
+    background 0.4s cubic-bezier(0.23, 1, 0.32, 1),
+    transform 0.4s cubic-bezier(0.23, 1, 0.32, 1),
+    box-shadow 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.marquee__item:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.3);
+}
+
+/* --- Carousel mockup img zoom --- */
+.carousel__mockup-img {
+  transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1), filter 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: transform;
+}
+
+/* --- Contact form success toast --- */
+.contact__form-success {
+  transition: opacity 0.5s cubic-bezier(0.23, 1, 0.32, 1), transform 0.5s cubic-bezier(0.23, 1, 0.32, 1), visibility 0.5s, max-height 0.5s;
+}
+
+/* --- Contact form error toast --- */
+.contact__form-error {
+  transition: opacity 0.5s cubic-bezier(0.23, 1, 0.32, 1), transform 0.5s cubic-bezier(0.23, 1, 0.32, 1), visibility 0.5s, max-height 0.5s;
+}
+
+/* --- Copy tooltip --- */
+.contact__copy-tip {
+  transition: opacity 0.4s cubic-bezier(0.23, 1, 0.32, 1), transform 0.4s cubic-bezier(0.23, 1, 0.32, 1), visibility 0.4s;
+}
+
+/* -----------------------------------------------
+   REDUCED MOTION — Disable all animations
+   ----------------------------------------------- */
+@media (prefers-reduced-motion: reduce) {
+  [data-reveal-slide-left],
+  [data-reveal-slide-right],
+  [data-reveal-fade-up],
+  [data-reveal-project],
+  [data-reveal-paper],
+  [data-reveal-soft],
+  [data-reveal-head] {
+    opacity: 1;
+    transform: none;
+    filter: none;
+  }
+
+  .section__rule {
+    transform: scaleX(1);
+  }
+
+  .section__idx {
+    opacity: 1;
+    transform: none;
+  }
+
+  .poster,
+  .hero__eyebrow,
+  .hero__name-line,
+  .hero__role,
+  .hero__desc,
+  .hero__actions,
+  .hero__scroll-cue {
+    opacity: 1;
+    transform: none;
+    filter: none;
+  }
+
+  .hero__cursor-blink {
+    animation: none;
+    opacity: 1;
+  }
+
+  .hero__scroll-line {
+    animation: none;
+    opacity: 0.4;
+  }
+
+  .poster__sheen {
+    animation: none;
+  }
+
+  .ambient-orb--1,
+  .ambient-orb--2,
+  .ambient-orb--3 {
+    animation: none;
+  }
+
+  .btn__bg {
+    transition: none;
+  }
+
+  .btn__ripple {
+    display: none;
+  }
+
+  .hero__ambient--1,
+  .hero__ambient--2 {
+    animation: none;
+  }
+
+  .nav[data-nav-entrance] {
+    opacity: 1;
+    transform: none;
+  }
+
+  .carousel__card,
+  .carousel__bg-orb {
+    transition: none;
+  }
+
+  .loader__label {
+    animation: none;
+    opacity: 0.5;
+  }
+
+  .cursor__dot,
+  .cursor__ring {
+    transition: none;
+  }
+
+  .stat:hover,
+  .cert:hover,
+  .btn--icon:hover,
+  .btn:hover {
+    transform: none;
+  }
+
+  .marquee__item:hover {
+    transform: none;
+  }
+}

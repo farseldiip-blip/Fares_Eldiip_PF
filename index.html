@@ -1,0 +1,1689 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Fares Eldiip — Front-End Developer crafting cinematic digital experiences with precision and style."
+    />
+    <meta
+      name="keywords"
+      content="Fares Eldiip, Front-End Developer, Portfolio, Web Development, UI Engineer"
+    />
+    <meta name="author" content="Fares Eldiip" />
+    <title>Fares Eldiip | Front-End Developer</title>
+
+    <!-- OG Meta -->
+    <meta property="og:title" content="Fares Eldiip | Front-End Developer" />
+    <meta
+      property="og:description"
+      content="Crafting cinematic digital experiences with precision and style."
+    />
+    <meta property="og:type" content="website" />
+    <meta name="theme-color" content="#0c0907" />
+
+    <!-- Favicon -->
+    <link
+      rel="icon"
+      href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>&#9876;</text></svg>"
+    />
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700;900&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,500&family=DM+Serif+Display:ital@0;1&family=Inter:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="styles/base.css" />
+    <link rel="stylesheet" href="styles/components.css" />
+    <link rel="stylesheet" href="styles/sections.css" />
+    <link rel="stylesheet" href="styles/animations.css" />
+    <link rel="stylesheet" href="styles/effects.css" />
+    <link rel="stylesheet" href="styles/environment.css" />
+    <link rel="stylesheet" href="styles/responsive.css" />
+    <link rel="stylesheet" href="styles/skills-arsenal.css" />
+    <link rel="stylesheet" href="styles/embers-bg.css" />
+  </head>
+  <body>
+    <!-- Skip link -->
+    <a href="#main" class="skip-link">Skip to content</a>
+
+    <!-- Loader -->
+    <div id="loader" class="loader" aria-hidden="true">
+      <canvas id="loader-canvas" class="loader__canvas"></canvas>
+      <span class="loader__label">Loading</span>
+    </div>
+
+    <!-- Custom cursor -->
+    <div id="cursor" class="cursor" aria-hidden="true">
+      <div class="cursor__dot"></div>
+      <div class="cursor__ring"></div>
+    </div>
+
+    <!-- Film grain -->
+    <div class="grain" aria-hidden="true"></div>
+
+    <!-- Environment — cinematic background atmosphere -->
+    <div class="env" aria-hidden="true">
+      <div class="env__landscape">
+        <div class="env__mountains"></div>
+        <div class="env__hills"></div>
+        <div class="env__floor"></div>
+      </div>
+      <div class="env__dust"></div>
+      <div class="env__sand"></div>
+      <div class="env__sparks"></div>
+      <div class="env__fog env__fog--1"></div>
+      <div class="env__fog env__fog--2"></div>
+    </div>
+
+    <!-- Tumbleweed — separate from .env to preserve fixed positioning -->
+    <div class="env__tumbleweed" id="tumbleweed" aria-hidden="true"></div>
+
+    <!-- Embers & dust ambient background canvas -->
+    <canvas id="embers-canvas" aria-hidden="true"></canvas>
+
+    <!-- Ambient orbs -->
+    <div class="ambient-orb ambient-orb--1" aria-hidden="true"></div>
+    <div class="ambient-orb ambient-orb--2" aria-hidden="true"></div>
+    <div class="ambient-orb ambient-orb--3" aria-hidden="true"></div>
+
+    <!-- Navbar -->
+    <nav id="navbar" class="nav" aria-label="Main navigation" data-nav-entrance>
+      <div class="nav__inner">
+        <a href="#hero" class="nav__logo" aria-label="Home">
+          <span class="nav__logo-mark">FE</span>
+        </a>
+        <ul class="nav__links" role="list">
+          <li>
+            <a href="#projects" class="nav__link" data-section="projects"
+              >Projects</a
+            >
+          </li>
+          <li>
+            <a href="#skills" class="nav__link" data-section="skills">Skills</a>
+          </li>
+          <li>
+            <a
+              href="#certificates"
+              class="nav__link"
+              data-section="certificates"
+              >Certificates</a
+            >
+          </li>
+          <li>
+            <a href="#about" class="nav__link" data-section="about">About</a>
+          </li>
+          <li>
+            <a href="#contact" class="nav__link" data-section="contact"
+              >Contact</a
+            >
+          </li>
+        </ul>
+        <button
+          class="nav__burger"
+          aria-label="Toggle menu"
+          aria-expanded="false"
+        >
+          <span class="nav__burger-line"></span>
+          <span class="nav__burger-line"></span>
+          <span class="nav__burger-line"></span>
+        </button>
+      </div>
+    </nav>
+
+    <!-- Mobile menu -->
+    <div id="mobile-menu" class="mobile-menu" aria-hidden="true">
+      <div class="mobile-menu__inner">
+        <a href="#projects" class="mobile-menu__link">Projects</a>
+        <a href="#skills" class="mobile-menu__link">Skills</a>
+        <a href="#certificates" class="mobile-menu__link">Certificates</a>
+        <a href="#about" class="mobile-menu__link">About</a>
+        <a href="#contact" class="mobile-menu__link">Contact</a>
+      </div>
+    </div>
+
+    <!-- Main content -->
+    <main id="main">
+      <!-- ===== HERO ===== -->
+      <section id="hero" class="hero">
+        <div class="hero__bg">
+          <canvas id="hero-particles" class="hero__particles"></canvas>
+          <div class="hero__gradient"></div>
+          <div class="hero__vignette"></div>
+          <div class="hero__ambient hero__ambient--1"></div>
+          <div class="hero__ambient hero__ambient--2"></div>
+        </div>
+        <div class="hero__content">
+          <div class="hero__text">
+            <p class="hero__eyebrow">Hello, I'm</p>
+            <h1 class="hero__name">
+              <span class="hero__name-line">Fares</span>
+              <span class="hero__name-line hero__name-line--accent"
+                >Eldiip</span
+              >
+            </h1>
+            <div class="hero__role">
+              <span class="hero__role-static">I'm a </span>
+              <span id="typing-target" class="hero__role-dynamic"></span>
+              <span class="hero__cursor-blink" aria-hidden="true">|</span>
+            </div>
+            <p class="hero__desc">
+              Crafting cinematic digital experiences with precision, elegance,
+              and obsessive attention to detail.
+            </p>
+            <div class="hero__actions">
+              <a href="#projects" class="btn btn--primary magnetic">
+                <span class="btn__bg"></span>
+                <span class="btn__label">View Projects</span>
+                <svg
+                  class="btn__arrow"
+                  width="16"
+                  height="16"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                >
+                  <path d="M5 12h14M12 5l7 7-7 7" />
+                </svg>
+              </a>
+              <a
+                href="assets/FARES_EKRAME_CV.pdf"
+                download
+                class="btn btn--ghost magnetic"
+              >
+                <span class="btn__bg"></span>
+                <span class="btn__label">Download CV</span>
+              </a>
+            </div>
+          </div>
+          <div class="hero__visual">
+            <div class="poster">
+              <div class="poster__paper">
+                <div class="poster__grain" aria-hidden="true"></div>
+                <div
+                  class="poster__stain poster__stain--1"
+                  aria-hidden="true"
+                ></div>
+                <div
+                  class="poster__stain poster__stain--2"
+                  aria-hidden="true"
+                ></div>
+                <div
+                  class="poster__fold poster__fold--h"
+                  aria-hidden="true"
+                ></div>
+                <div
+                  class="poster__fold poster__fold--v"
+                  aria-hidden="true"
+                ></div>
+                <div class="poster__burn" aria-hidden="true"></div>
+                <div class="poster__sheen" aria-hidden="true"></div>
+                <div class="poster__highlight" aria-hidden="true"></div>
+                <div class="poster__portrait">
+                  <img
+                    src="assets/images/WhatsApp Image 2026-07-10 at 10.47.17 PM.jpeg"
+                    alt="Fares Eldiip"
+                    class="poster__portrait-img"
+                    loading="eager"
+                    decoding="async"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="hero__scroll-cue">
+          <span class="hero__scroll-text">Scroll</span>
+          <div class="hero__scroll-line"></div>
+        </div>
+      </section>
+
+      <div class="section-transition" aria-hidden="true">
+        <div class="section-transition__glow"></div>
+        <div class="section-transition__line"></div>
+      </div>
+
+      <!-- ===== PROJECTS — 3D Carousel ===== -->
+      <section
+        id="projects"
+        class="projects-carousel"
+        aria-label="Projects"
+        aria-roledescription="carousel"
+      >
+        <div class="carousel__header" data-reveal-project>
+          <span class="carousel__eyebrow">Selected Works</span>
+          <h2 class="carousel__title">Projects</h2>
+          <div class="carousel__counter">
+            <span class="carousel__current" id="carousel-current">01</span>
+            <span class="carousel__sep">/</span>
+            <span class="carousel__total" id="carousel-total">04</span>
+          </div>
+          <div class="carousel__progress" aria-hidden="true">
+            <div
+              class="carousel__progress-fill"
+              id="carousel-progress-fill"
+            ></div>
+          </div>
+        </div>
+
+        <div class="carousel__scene" id="carousel-scene">
+          <div class="carousel__bg" aria-hidden="true">
+            <div class="carousel__bg-orb carousel__bg-orb--1"></div>
+            <div class="carousel__bg-orb carousel__bg-orb--2"></div>
+            <div class="carousel__bg-orb carousel__bg-orb--3"></div>
+            <div class="carousel__bg-grain"></div>
+          </div>
+
+          <div
+            class="carousel__viewport"
+            id="carousel-viewport"
+            role="region"
+            aria-label="Project carousel"
+            tabindex="0"
+          >
+            <article
+              class="carousel__slide"
+              data-index="0"
+              aria-roledescription="slide"
+              aria-label="Project 1 of 4"
+            >
+              <div class="carousel__card">
+                <div class="carousel__card-inner">
+                  <div class="carousel__card-visual">
+                    <div class="carousel__mockup">
+                      <div class="carousel__mockup-bar">
+                        <div class="carousel__mockup-dots">
+                          <span></span><span></span><span></span>
+                        </div>
+                        <div class="carousel__mockup-url">volta-store.com</div>
+                      </div>
+                      <div class="carousel__mockup-screen">
+                        <img
+                          src="assets/images/voltat 2026-07-15 162150.png"
+                          alt="Volta Store project preview"
+                          class="carousel__mockup-img"
+                          loading="lazy"
+                          decoding="async"
+                        />
+                        <div class="carousel__mockup-overlay">
+                          <a
+                            href="https://volta-store-ec.vercel.app/"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            class="carousel__mockup-btn"
+                            aria-label="View Volta Store project"
+                          >
+                            <span>View Project</span>
+                            <svg
+                              width="16"
+                              height="16"
+                              viewBox="0 0 24 24"
+                              fill="none"
+                              stroke="currentColor"
+                              stroke-width="2"
+                            >
+                              <path d="M7 17L17 7M17 7H7M17 7v10" />
+                            </svg>
+                          </a>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="carousel__card-content">
+                    <span class="carousel__category">Web Application</span>
+                    <h3 class="carousel__name">Volta Store</h3>
+                    <p class="carousel__desc">
+                      Modern responsive e-commerce platform with product
+                      browsing, shopping cart, and dashboard
+                    </p>
+                    <div class="carousel__tech">
+                      <span>React</span><span>Vite</span
+                      ><span>Tailwind CSS</span><span>React Router</span
+                      ><span>Zustand</span><span>React Query</span>
+                    </div>
+                    <div class="carousel__links">
+                      <a
+                        href="#"
+                        class="carousel__link magnetic"
+                        aria-label="GitHub"
+                        ><svg
+                          width="18"
+                          height="18"
+                          viewBox="0 0 24 24"
+                          fill="currentColor"
+                        >
+                          <path
+                            d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.44 9.8 8.21 11.39.6.1.82-.26.82-.57 0-.28-.01-1.23-.01-2.23-3.01.56-3.8-.74-4.04-1.41-.13-.35-.72-1.41-1.23-1.7-.42-.22-1.02-.78-.01-.8.95-.01 1.62.87 1.85 1.23 1.08 1.82 2.81 1.31 3.49.99.11-.78.42-1.31.77-1.61-2.67-.3-5.46-1.34-5.46-5.93 0-1.3.47-2.38 1.23-3.22-.12-.3-.54-1.53.12-3.18 0 0 1.01-.32 3.3 1.23.96-.27 1.98-.41 3-.41s2.04.14 3 .41c2.3-1.55 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.77.84 1.23 1.9 1.23 3.23 0 4.6-2.8 5.62-5.47 5.92.44.38.81 1.1.81 2.22 0 1.61-.01 2.9-.01 3.3 0 .32.22.69.82.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"
+                          /></svg
+                      ></a>
+                      <a
+                        href="#"
+                        class="carousel__link magnetic"
+                        aria-label="Live demo"
+                        ><svg
+                          width="18"
+                          height="18"
+                          viewBox="0 0 24 24"
+                          fill="none"
+                          stroke="currentColor"
+                          stroke-width="2"
+                        >
+                          <path
+                            d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"
+                          />
+                          <polyline points="15 3 21 3 21 9" />
+                          <line x1="10" y1="14" x2="21" y2="3" /></svg
+                      ></a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </article>
+
+            <article
+              class="carousel__slide"
+              data-index="1"
+              aria-roledescription="slide"
+              aria-label="Project 2 of 4"
+            >
+              <div class="carousel__card">
+                <div class="carousel__card-inner">
+                  <div class="carousel__card-visual">
+                    <div class="carousel__mockup">
+                      <div class="carousel__mockup-bar">
+                        <div class="carousel__mockup-dots">
+                          <span></span><span></span><span></span>
+                        </div>
+                        <div class="carousel__mockup-url">atom-weather.app</div>
+                      </div>
+                      <div class="carousel__mockup-screen">
+                        <img
+                          src="assets/images/atom.png"
+                          alt="Atom Weather project preview"
+                          class="carousel__mockup-img"
+                          loading="lazy"
+                          decoding="async"
+                        />
+                        <div class="carousel__mockup-overlay">
+                          <a
+                            href="https://atom-weather-dashboard.vercel.app/"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            class="carousel__mockup-btn"
+                            aria-label="View Atom Weather project"
+                          >
+                            <span>View Project</span>
+                            <svg
+                              width="16"
+                              height="16"
+                              viewBox="0 0 24 24"
+                              fill="none"
+                              stroke="currentColor"
+                              stroke-width="2"
+                            >
+                              <path d="M7 17L17 7M17 7H7M17 7v10" />
+                            </svg>
+                          </a>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="carousel__card-content">
+                    <span class="carousel__category">Web Application</span>
+                    <h3 class="carousel__name">Atom Weather</h3>
+                    <p class="carousel__desc">
+                      Real-time weather dashboard with forecasts, search, and
+                      interactive charts.
+                    </p>
+                    <div class="carousel__tech">
+                      <span>React</span><span>TypeScript</span
+                      ><span>Tailwind</span> <span>Axios</span>
+                    </div>
+                    <div class="carousel__links">
+                      <a
+                        href="#"
+                        class="carousel__link magnetic"
+                        aria-label="GitHub"
+                        ><svg
+                          width="18"
+                          height="18"
+                          viewBox="0 0 24 24"
+                          fill="currentColor"
+                        >
+                          <path
+                            d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.44 9.8 8.21 11.39.6.1.82-.26.82-.57 0-.28-.01-1.23-.01-2.23-3.01.56-3.8-.74-4.04-1.41-.13-.35-.72-1.41-1.23-1.7-.42-.22-1.02-.78-.01-.8.95-.01 1.62.87 1.85 1.23 1.08 1.82 2.81 1.31 3.49.99.11-.78.42-1.31.77-1.61-2.67-.3-5.46-1.34-5.46-5.93 0-1.3.47-2.38 1.23-3.22-.12-.3-.54-1.53.12-3.18 0 0 1.01-.32 3.3 1.23.96-.27 1.98-.41 3-.41s2.04.14 3 .41c2.3-1.55 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.77.84 1.23 1.9 1.23 3.23 0 4.6-2.8 5.62-5.47 5.92.44.38.81 1.1.81 2.22 0 1.61-.01 2.9-.01 3.3 0 .32.22.69.82.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"
+                          /></svg
+                      ></a>
+                      <a
+                        href="#"
+                        class="carousel__link magnetic"
+                        aria-label="Live demo"
+                        ><svg
+                          width="18"
+                          height="18"
+                          viewBox="0 0 24 24"
+                          fill="none"
+                          stroke="currentColor"
+                          stroke-width="2"
+                        >
+                          <path
+                            d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"
+                          />
+                          <polyline points="15 3 21 3 21 9" />
+                          <line x1="10" y1="14" x2="21" y2="3" /></svg
+                      ></a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </article>
+
+            <article
+              class="carousel__slide"
+              data-index="2"
+              aria-roledescription="slide"
+              aria-label="Project 3 of 4"
+            >
+              <div class="carousel__card">
+                <div class="carousel__card-inner">
+                  <div class="carousel__card-visual">
+                    <div class="carousel__mockup">
+                      <div class="carousel__mockup-bar">
+                        <div class="carousel__mockup-dots">
+                          <span></span><span></span><span></span>
+                        </div>
+                        <div class="carousel__mockup-url">digital-menu.io</div>
+                      </div>
+                      <div class="carousel__mockup-screen">
+                        <img
+                          src="assets/images/rect.png"
+                          alt="Digital Menu project preview"
+                          class="carousel__mockup-img"
+                          loading="lazy"
+                          decoding="async"
+                        />
+                        <div class="carousel__mockup-overlay">
+                          <a
+                            href="https://digital-menu-with-whats-app.vercel.app/index.html"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            class="carousel__mockup-btn"
+                            aria-label="View Digital Menu project"
+                          >
+                            <span>View Project</span>
+                            <svg
+                              width="16"
+                              height="16"
+                              viewBox="0 0 24 24"
+                              fill="none"
+                              stroke="currentColor"
+                              stroke-width="2"
+                            >
+                              <path d="M7 17L17 7M17 7H7M17 7v10" />
+                            </svg>
+                          </a>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="carousel__card-content">
+                    <span class="carousel__category">Digital Menu</span>
+                    <h3 class="carousel__name">Digital Menu</h3>
+                    <p class="carousel__desc">
+                      Responsive digital restaurant menu with category
+                      navigation and WhatsApp ordering.
+                    </p>
+                    <div class="carousel__tech">
+                      <span>HTML</span><span>css</span><span>javaScript</span>
+                      <span>Responsive Design</span>
+                    </div>
+                    <div class="carousel__links">
+                      <a
+                        href="#"
+                        class="carousel__link magnetic"
+                        aria-label="GitHub"
+                        ><svg
+                          width="18"
+                          height="18"
+                          viewBox="0 0 24 24"
+                          fill="currentColor"
+                        >
+                          <path
+                            d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.44 9.8 8.21 11.39.6.1.82-.26.82-.57 0-.28-.01-1.23-.01-2.23-3.01.56-3.8-.74-4.04-1.41-.13-.35-.72-1.41-1.23-1.7-.42-.22-1.02-.78-.01-.8.95-.01 1.62.87 1.85 1.23 1.08 1.82 2.81 1.31 3.49.99.11-.78.42-1.31.77-1.61-2.67-.3-5.46-1.34-5.46-5.93 0-1.3.47-2.38 1.23-3.22-.12-.3-.54-1.53.12-3.18 0 0 1.01-.32 3.3 1.23.96-.27 1.98-.41 3-.41s2.04.14 3 .41c2.3-1.55 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.77.84 1.23 1.9 1.23 3.23 0 4.6-2.8 5.62-5.47 5.92.44.38.81 1.1.81 2.22 0 1.61-.01 2.9-.01 3.3 0 .32.22.69.82.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"
+                          /></svg
+                      ></a>
+                      <a
+                        href="#"
+                        class="carousel__link magnetic"
+                        aria-label="Live demo"
+                        ><svg
+                          width="18"
+                          height="18"
+                          viewBox="0 0 24 24"
+                          fill="none"
+                          stroke="currentColor"
+                          stroke-width="2"
+                        >
+                          <path
+                            d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"
+                          />
+                          <polyline points="15 3 21 3 21 9" />
+                          <line x1="10" y1="14" x2="21" y2="3" /></svg
+                      ></a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </article>
+
+            <article
+              class="carousel__slide"
+              data-index="3"
+              aria-roledescription="slide"
+              aria-label="Project 4 of 4"
+            >
+              <div class="carousel__card">
+                <div class="carousel__card-inner">
+                  <div class="carousel__card-visual">
+                    <div class="carousel__mockup">
+                      <div class="carousel__mockup-bar">
+                        <div class="carousel__mockup-dots">
+                          <span></span><span></span><span></span>
+                        </div>
+                        <div class="carousel__mockup-url">vitcare.vet</div>
+                      </div>
+                      <div class="carousel__mockup-screen">
+                        <img
+                          src="assets/images/vitcare.png"
+                          alt="VitCare project preview"
+                          class="carousel__mockup-img"
+                          loading="lazy"
+                          decoding="async"
+                        />
+                        <div class="carousel__mockup-overlay">
+                          <a
+                            href="https://farseldiip-blip.github.io/-VitCare/"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            class="carousel__mockup-btn"
+                            aria-label="View VitCare project"
+                          >
+                            <span>View Project</span>
+                            <svg
+                              width="16"
+                              height="16"
+                              viewBox="0 0 24 24"
+                              fill="none"
+                              stroke="currentColor"
+                              stroke-width="2"
+                            >
+                              <path d="M7 17L17 7M17 7H7M17 7v10" />
+                            </svg>
+                          </a>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="carousel__card-content">
+                    <span class="carousel__category">Web Application</span>
+                    <h3 class="carousel__name">VitCare</h3>
+                    <p class="carousel__desc">
+                      Modern veterinary clinic landing page with services,
+                      booking, and responsive design.
+                    </p>
+                    <div class="carousel__tech">
+                      <span>HTML</span><span>CSS</span><span>JavaScript</span>
+                    </div>
+                    <div class="carousel__links">
+                      <a
+                        href="#"
+                        class="carousel__link magnetic"
+                        aria-label="GitHub"
+                        ><svg
+                          width="18"
+                          height="18"
+                          viewBox="0 0 24 24"
+                          fill="currentColor"
+                        >
+                          <path
+                            d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.44 9.8 8.21 11.39.6.1.82-.26.82-.57 0-.28-.01-1.23-.01-2.23-3.01.56-3.8-.74-4.04-1.41-.13-.35-.72-1.41-1.23-1.7-.42-.22-1.02-.78-.01-.8.95-.01 1.62.87 1.85 1.23 1.08 1.82 2.81 1.31 3.49.99.11-.78.42-1.31.77-1.61-2.67-.3-5.46-1.34-5.46-5.93 0-1.3.47-2.38 1.23-3.22-.12-.3-.54-1.53.12-3.18 0 0 1.01-.32 3.3 1.23.96-.27 1.98-.41 3-.41s2.04.14 3 .41c2.3-1.55 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.77.84 1.23 1.9 1.23 3.23 0 4.6-2.8 5.62-5.47 5.92.44.38.81 1.1.81 2.22 0 1.61-.01 2.9-.01 3.3 0 .32.22.69.82.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"
+                          /></svg
+                      ></a>
+                      <a
+                        href="#"
+                        class="carousel__link magnetic"
+                        aria-label="Live demo"
+                        ><svg
+                          width="18"
+                          height="18"
+                          viewBox="0 0 24 24"
+                          fill="none"
+                          stroke="currentColor"
+                          stroke-width="2"
+                        >
+                          <path
+                            d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"
+                          />
+                          <polyline points="15 3 21 3 21 9" />
+                          <line x1="10" y1="14" x2="21" y2="3" /></svg
+                      ></a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </article>
+          </div>
+        </div>
+
+        <div class="carousel__nav">
+          <button
+            class="carousel__arrow carousel__arrow--prev"
+            id="carousel-prev"
+            aria-label="Previous project"
+          >
+            <svg
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.5"
+            >
+              <path d="M15 18l-6-6 6-6" />
+            </svg>
+          </button>
+          <div
+            class="carousel__dots"
+            id="carousel-dots"
+            role="group"
+            aria-label="Project navigation"
+          >
+            <button
+              class="carousel__dot carousel__dot--active"
+              data-dot="0"
+              aria-label="Project 1"
+            ></button>
+            <button
+              class="carousel__dot"
+              data-dot="1"
+              aria-label="Project 2"
+            ></button>
+            <button
+              class="carousel__dot"
+              data-dot="2"
+              aria-label="Project 3"
+            ></button>
+            <button
+              class="carousel__dot"
+              data-dot="3"
+              aria-label="Project 4"
+            ></button>
+          </div>
+          <button
+            class="carousel__arrow carousel__arrow--next"
+            id="carousel-next"
+            aria-label="Next project"
+          >
+            <svg
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.5"
+            >
+              <path d="M9 18l6-6-6-6" />
+            </svg>
+          </button>
+        </div>
+      </section>
+
+      <div class="section-transition" aria-hidden="true">
+        <div class="section-transition__glow"></div>
+        <div class="section-transition__line"></div>
+      </div>
+
+      <!-- ===== SKILLS ===== -->
+      <section id="skills" class="section skills">
+        <div class="container">
+          <header class="section__head" data-reveal-fade-up>
+            <span class="section__idx">02</span>
+            <h2 class="section__title">Skills</h2>
+            <div class="section__rule"></div>
+          </header>
+        </div>
+
+        <!-- Infinite scrolling marquee -->
+        <div class="marquee" aria-label="Skills showcase">
+          <div class="marquee__track">
+            <!-- Set 1 -->
+            <div class="marquee__item">
+              <div class="marquee__icon">
+                <svg viewBox="0 0 48 48" width="24" height="24">
+                  <path fill="#E34F26" d="M6 4l3.5 38L24 46l14.5-4L42 4H6z" />
+                  <path fill="#EF6539" d="M24 8v36l11-3 3-33H24z" />
+                  <path
+                    fill="#fff"
+                    d="M24 20v4h8l-.8-8H24v4h10.5l-.5 5H24zm-8 10l1.2 6h7.8v-4h-5l-.3-2H16zm16.5 0L31 36l-5-2-5 2 1.2-6"
+                  />
+                </svg>
+              </div>
+              <span class="marquee__name">HTML5</span>
+              <div class="marquee__bar">
+                <div class="marquee__fill" style="--w: 95%"></div>
+              </div>
+            </div>
+            <div class="marquee__item">
+              <div class="marquee__icon">
+                <svg viewBox="0 0 48 48" width="24" height="24">
+                  <path fill="#1572B6" d="M6 4h36l-3.2 36L24 44l-14.8-4L6 4z" />
+                  <path fill="#33A9DC" d="M24 8v32l11.5-3.5 2.7-30H24z" />
+                  <path
+                    fill="#fff"
+                    d="M24 16h8.5l-.3 3.5H24V24h7l-.8 8H24v4h7.5l-.5 5L24 38v4l10.5-3 .8-10H24v-3h10l-.5-5H24z"
+                  />
+                </svg>
+              </div>
+              <span class="marquee__name">CSS3</span>
+              <div class="marquee__bar">
+                <div class="marquee__fill" style="--w: 90%"></div>
+              </div>
+            </div>
+            <div class="marquee__item">
+              <div class="marquee__icon">
+                <svg viewBox="0 0 48 48" width="24" height="24">
+                  <rect
+                    x="3"
+                    y="3"
+                    width="42"
+                    height="42"
+                    rx="4"
+                    fill="#F7DF1E"
+                  />
+                  <path
+                    d="M14.5 20.5c0-2.5 2-4.5 5.5-4.5 3 0 4.5 1.5 4.5 1.5l-1.5 2.5s-1-1-3-1c-2 0-3 1-3 2.5 0 4 8 1.5 8 7 0 2.8-2.2 5-6 5-3.5 0-5.5-1.5-5.5-1.5l1.5-2.5s1.5 1.5 4 1.5c2.2 0 3-1 3-2.5 0-4.5-8-2-8-7 0-2.5 2-4.5 5.5-4.5 3.2 0 5 1.2 5 1.2l-1.5 2.5s-1.2-1-3.5-1c-2 0-3 1-3 2.5z"
+                    fill="#323330"
+                  />
+                </svg>
+              </div>
+              <span class="marquee__name">JavaScript</span>
+              <div class="marquee__bar">
+                <div class="marquee__fill" style="--w: 85%"></div>
+              </div>
+            </div>
+            <div class="marquee__item">
+              <div class="marquee__icon">
+                <svg viewBox="0 0 48 48" width="24" height="24">
+                  <rect
+                    x="3"
+                    y="3"
+                    width="42"
+                    height="42"
+                    rx="4"
+                    fill="#3178C6"
+                  />
+                  <path
+                    fill="#fff"
+                    d="M15 21h4.5v14H24V23h5v-2H15zm13 0h4v1.5h.1c.8-1.2 2-2 3.9-2 4.1 0 4.8 2.7 4.8 6.2 0 3.5-.7 6.3-4.8 6.3-2 0-3.2-.9-3.9-2.1h-.1V35H28V21zm4 8c0-2.5-.5-4.5-3-4.5s-2.8 2-2.8 4.5c0 2.4.4 4.5 2.8 4.5 2.5 0 3-2 3-4.5z"
+                  />
+                </svg>
+              </div>
+              <span class="marquee__name">TypeScript</span>
+              <div class="marquee__bar">
+                <div class="marquee__fill" style="--w: 75%"></div>
+              </div>
+            </div>
+            <div class="marquee__item">
+              <div class="marquee__icon">
+                <svg viewBox="0 0 48 48" width="24" height="24">
+                  <circle cx="24" cy="24" r="4" fill="#61DAFB" />
+                  <ellipse
+                    cx="24"
+                    cy="24"
+                    rx="20"
+                    ry="7.5"
+                    fill="none"
+                    stroke="#61DAFB"
+                    stroke-width="1.8"
+                  />
+                  <ellipse
+                    cx="24"
+                    cy="24"
+                    rx="20"
+                    ry="7.5"
+                    fill="none"
+                    stroke="#61DAFB"
+                    stroke-width="1.8"
+                    transform="rotate(60 24 24)"
+                  />
+                  <ellipse
+                    cx="24"
+                    cy="24"
+                    rx="20"
+                    ry="7.5"
+                    fill="none"
+                    stroke="#61DAFB"
+                    stroke-width="1.8"
+                    transform="rotate(120 24 24)"
+                  />
+                </svg>
+              </div>
+              <span class="marquee__name">React</span>
+              <div class="marquee__bar">
+                <div class="marquee__fill" style="--w: 80%"></div>
+              </div>
+            </div>
+            <div class="marquee__item">
+              <div class="marquee__icon">
+                <svg viewBox="0 0 48 48" width="24" height="24">
+                  <path
+                    fill="#06B6D4"
+                    d="M14 20c-1-3 0-7 3-9l2 3c-2 1.5-2.5 3.5-2 5.5l4-1c-1.5-3-1-5.5 1.5-7l2 2c-1.8 1.5-2.3 3.5-1.5 5.5l5-1.5c-2-3-1.5-6 1-8l2 2c-2 1.8-2.5 4-1.5 6.5l3-1-1 3.5 7-2c-2-3-1.5-6 1-8l2 2c-2 1.8-2.5 4-1.5 6l4-1.5c-2-3-1.5-6 1-8l2 2c-2 1.8-2.5 4-1.5 6.5l3-1c-.5 3 0 5 1.5 6.5l-2 1.5c-2-1.5-2.5-4-1.5-6l-4 1c.5 2.5 0 4.5-1.5 6l-2-1.5c2-1.5 2.5-3.5 1.5-5.5l-3 1c.5 3 0 5-1.5 6.5l-2-1.5c2-1.5 2.5-4 1.5-6l-5 1.5c.5 3 0 5-1.5 6.5l-2-1.5c2-1.5 2.5-4 1.5-6l-3 1 .5-3c-3 1-5 3-5 6z"
+                  />
+                </svg>
+              </div>
+              <span class="marquee__name">Tailwind</span>
+              <div class="marquee__bar">
+                <div class="marquee__fill" style="--w: 85%"></div>
+              </div>
+            </div>
+            <div class="marquee__item">
+              <div class="marquee__icon">
+                <svg viewBox="0 0 48 48" width="24" height="24">
+                  <path
+                    fill="#88CE02"
+                    d="M7.5 21L24 6l16.5 15-7.5 7L24 16 15 28z"
+                  />
+                  <path
+                    fill="#0AE448"
+                    d="M7.5 27L24 12l16.5 15H28l-4-5-8.5 10z"
+                    opacity="0.7"
+                  />
+                </svg>
+              </div>
+              <span class="marquee__name">GSAP</span>
+              <div class="marquee__bar">
+                <div class="marquee__fill" style="--w: 80%"></div>
+              </div>
+            </div>
+            <div class="marquee__item">
+              <div class="marquee__icon">
+                <svg viewBox="0 0 48 48" width="24" height="24">
+                  <path
+                    fill="#339933"
+                    d="M24 4L4 14v20l20 10 20-10V14L24 4z"
+                    opacity="0.85"
+                  />
+                  <path fill="#68A063" d="M24 8l14 7v14l-14 7-14-7V15L24 8z" />
+                  <text
+                    x="24"
+                    y="29"
+                    text-anchor="middle"
+                    fill="#fff"
+                    font-family="Arial,sans-serif"
+                    font-weight="bold"
+                    font-size="10"
+                  >
+                    N
+                  </text>
+                </svg>
+              </div>
+              <span class="marquee__name">Node.js</span>
+              <div class="marquee__bar">
+                <div class="marquee__fill" style="--w: 70%"></div>
+              </div>
+            </div>
+
+            <!-- Set 2 (duplicate for seamless loop) -->
+            <div class="marquee__item" aria-hidden="true">
+              <div class="marquee__icon">
+                <svg viewBox="0 0 48 48" width="24" height="24">
+                  <path fill="#E34F26" d="M6 4l3.5 38L24 46l14.5-4L42 4H6z" />
+                  <path fill="#EF6539" d="M24 8v36l11-3 3-33H24z" />
+                  <path
+                    fill="#fff"
+                    d="M24 20v4h8l-.8-8H24v4h10.5l-.5 5H24zm-8 10l1.2 6h7.8v-4h-5l-.3-2H16zm16.5 0L31 36l-5-2-5 2 1.2-6"
+                  />
+                </svg>
+              </div>
+              <span class="marquee__name">HTML5</span>
+              <div class="marquee__bar">
+                <div class="marquee__fill" style="--w: 95%"></div>
+              </div>
+            </div>
+            <div class="marquee__item" aria-hidden="true">
+              <div class="marquee__icon">
+                <svg viewBox="0 0 48 48" width="24" height="24">
+                  <path fill="#1572B6" d="M6 4h36l-3.2 36L24 44l-14.8-4L6 4z" />
+                  <path fill="#33A9DC" d="M24 8v32l11.5-3.5 2.7-30H24z" />
+                  <path
+                    fill="#fff"
+                    d="M24 16h8.5l-.3 3.5H24V24h7l-.8 8H24v4h7.5l-.5 5L24 38v4l10.5-3 .8-10H24v-3h10l-.5-5H24z"
+                  />
+                </svg>
+              </div>
+              <span class="marquee__name">CSS3</span>
+              <div class="marquee__bar">
+                <div class="marquee__fill" style="--w: 90%"></div>
+              </div>
+            </div>
+            <div class="marquee__item" aria-hidden="true">
+              <div class="marquee__icon">
+                <svg viewBox="0 0 48 48" width="24" height="24">
+                  <rect
+                    x="3"
+                    y="3"
+                    width="42"
+                    height="42"
+                    rx="4"
+                    fill="#F7DF1E"
+                  />
+                  <path
+                    d="M14.5 20.5c0-2.5 2-4.5 5.5-4.5 3 0 4.5 1.5 4.5 1.5l-1.5 2.5s-1-1-3-1c-2 0-3 1-3 2.5 0 4 8 1.5 8 7 0 2.8-2.2 5-6 5-3.5 0-5.5-1.5-5.5-1.5l1.5-2.5s1.5 1.5 4 1.5c2.2 0 3-1 3-2.5 0-4.5-8-2-8-7 0-2.5 2-4.5 5.5-4.5 3.2 0 5 1.2 5 1.2l-1.5 2.5s-1.2-1-3.5-1c-2 0-3 1-3 2.5z"
+                    fill="#323330"
+                  />
+                </svg>
+              </div>
+              <span class="marquee__name">JavaScript</span>
+              <div class="marquee__bar">
+                <div class="marquee__fill" style="--w: 85%"></div>
+              </div>
+            </div>
+            <div class="marquee__item" aria-hidden="true">
+              <div class="marquee__icon">
+                <svg viewBox="0 0 48 48" width="24" height="24">
+                  <rect
+                    x="3"
+                    y="3"
+                    width="42"
+                    height="42"
+                    rx="4"
+                    fill="#3178C6"
+                  />
+                  <path
+                    fill="#fff"
+                    d="M15 21h4.5v14H24V23h5v-2H15zm13 0h4v1.5h.1c.8-1.2 2-2 3.9-2 4.1 0 4.8 2.7 4.8 6.2 0 3.5-.7 6.3-4.8 6.3-2 0-3.2-.9-3.9-2.1h-.1V35H28V21zm4 8c0-2.5-.5-4.5-3-4.5s-2.8 2-2.8 4.5c0 2.4.4 4.5 2.8 4.5 2.5 0 3-2 3-4.5z"
+                  />
+                </svg>
+              </div>
+              <span class="marquee__name">TypeScript</span>
+              <div class="marquee__bar">
+                <div class="marquee__fill" style="--w: 75%"></div>
+              </div>
+            </div>
+            <div class="marquee__item" aria-hidden="true">
+              <div class="marquee__icon">
+                <svg viewBox="0 0 48 48" width="24" height="24">
+                  <circle cx="24" cy="24" r="4" fill="#61DAFB" />
+                  <ellipse
+                    cx="24"
+                    cy="24"
+                    rx="20"
+                    ry="7.5"
+                    fill="none"
+                    stroke="#61DAFB"
+                    stroke-width="1.8"
+                  />
+                  <ellipse
+                    cx="24"
+                    cy="24"
+                    rx="20"
+                    ry="7.5"
+                    fill="none"
+                    stroke="#61DAFB"
+                    stroke-width="1.8"
+                    transform="rotate(60 24 24)"
+                  />
+                  <ellipse
+                    cx="24"
+                    cy="24"
+                    rx="20"
+                    ry="7.5"
+                    fill="none"
+                    stroke="#61DAFB"
+                    stroke-width="1.8"
+                    transform="rotate(120 24 24)"
+                  />
+                </svg>
+              </div>
+              <span class="marquee__name">React</span>
+              <div class="marquee__bar">
+                <div class="marquee__fill" style="--w: 80%"></div>
+              </div>
+            </div>
+            <div class="marquee__item" aria-hidden="true">
+              <div class="marquee__icon">
+                <svg viewBox="0 0 48 48" width="24" height="24">
+                  <path
+                    fill="#06B6D4"
+                    d="M14 20c-1-3 0-7 3-9l2 3c-2 1.5-2.5 3.5-2 5.5l4-1c-1.5-3-1-5.5 1.5-7l2 2c-1.8 1.5-2.3 3.5-1.5 5.5l5-1.5c-2-3-1.5-6 1-8l2 2c-2 1.8-2.5 4-1.5 6.5l3-1-1 3.5 7-2c-2-3-1.5-6 1-8l2 2c-2 1.8-2.5 4-1.5 6l4-1.5c-2-3-1.5-6 1-8l2 2c-2 1.8-2.5 4-1.5 6.5l3-1c-.5 3 0 5 1.5 6.5l-2 1.5c-2-1.5-2.5-4-1.5-6l-4 1c.5 2.5 0 4.5-1.5 6l-2-1.5c2-1.5 2.5-3.5 1.5-5.5l-3 1c.5 3 0 5-1.5 6.5l-2-1.5c2-1.5 2.5-4 1.5-6l-5 1.5c.5 3 0 5-1.5 6.5l-2-1.5c2-1.5 2.5-4 1.5-6l-3 1 .5-3c-3 1-5 3-5 6z"
+                  />
+                </svg>
+              </div>
+              <span class="marquee__name">Tailwind</span>
+              <div class="marquee__bar">
+                <div class="marquee__fill" style="--w: 85%"></div>
+              </div>
+            </div>
+            <div class="marquee__item" aria-hidden="true">
+              <div class="marquee__icon">
+                <svg viewBox="0 0 48 48" width="24" height="24">
+                  <path
+                    fill="#88CE02"
+                    d="M7.5 21L24 6l16.5 15-7.5 7L24 16 15 28z"
+                  />
+                  <path
+                    fill="#0AE448"
+                    d="M7.5 27L24 12l16.5 15H28l-4-5-8.5 10z"
+                    opacity="0.7"
+                  />
+                </svg>
+              </div>
+              <span class="marquee__name">GSAP</span>
+              <div class="marquee__bar">
+                <div class="marquee__fill" style="--w: 80%"></div>
+              </div>
+            </div>
+            <div class="marquee__item" aria-hidden="true">
+              <div class="marquee__icon">
+                <svg viewBox="0 0 48 48" width="24" height="24">
+                  <path
+                    fill="#339933"
+                    d="M24 4L4 14v20l20 10 20-10V14L24 4z"
+                    opacity="0.85"
+                  />
+                  <path fill="#68A063" d="M24 8l14 7v14l-14 7-14-7V15L24 8z" />
+                  <text
+                    x="24"
+                    y="29"
+                    text-anchor="middle"
+                    fill="#fff"
+                    font-family="Arial,sans-serif"
+                    font-weight="bold"
+                    font-size="10"
+                  >
+                    N
+                  </text>
+                </svg>
+              </div>
+              <span class="marquee__name">Node.js</span>
+              <div class="marquee__bar">
+                <div class="marquee__fill" style="--w: 70%"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <div class="section-transition" aria-hidden="true">
+        <div class="section-transition__glow"></div>
+        <div class="section-transition__line"></div>
+      </div>
+
+      <!-- ===== CERTIFICATES ===== -->
+      <section id="certificates" class="section certificates">
+        <div class="container">
+          <header class="section__head" data-reveal-head>
+            <span class="section__idx">03</span>
+            <h2 class="section__title">Certificates</h2>
+            <div class="section__rule"></div>
+          </header>
+          <div class="certs__grid">
+            <div class="cert" data-reveal-paper>
+              <div class="cert__icon">
+                <svg
+                  width="36"
+                  height="36"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="1.5"
+                >
+                  <path d="M22 10v6M2 10l10-5 10 5-10 5z" />
+                  <path d="M6 12v5c0 1.66 2.69 3 6 3s6-1.34 6-3v-5" />
+                </svg>
+              </div>
+              <h3 class="cert__title">Introduction to Prompt Engineering</h3>
+              <p class="cert__issuer">IBM SkillsBuild &mdash; Jun 2026</p>
+              <a
+                href="certs/prompt.pdf"
+                target="_blank"
+                rel="noopener"
+                class="cert__action"
+                >View</a
+              >
+            </div>
+            <div class="cert" data-reveal-paper data-delay="1">
+              <div class="cert__icon">
+                <svg
+                  width="36"
+                  height="36"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="1.5"
+                >
+                  <path
+                    d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"
+                  />
+                  <polyline points="7.5 4.21 12 6.81 16.5 4.21" />
+                  <line x1="12" y1="22.08" x2="12" y2="12" />
+                </svg>
+              </div>
+              <h3 class="cert__title">Claude</h3>
+              <p class="cert__issuer">Anthropic</p>
+              <a
+                href="certs/dubai-ai.pdf"
+                target="_blank"
+                rel="noopener"
+                class="cert__action"
+                >View</a
+              >
+            </div>
+            <div class="cert" data-reveal-paper data-delay="2">
+              <div class="cert__icon">
+                <svg
+                  width="36"
+                  height="36"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="1.5"
+                >
+                  <circle cx="12" cy="8" r="6" />
+                  <path d="M8.21 13.89L7 23l5-3 5 3-1.21-9.12" />
+                </svg>
+              </div>
+              <h3 class="cert__title">Mastering the Art of Prompting</h3>
+              <p class="cert__issuer">
+                Dubai Future Foundation &amp; Dubai Centre for AI
+              </p>
+              <a
+                href="certs/azure-ai.pdf"
+                target="_blank"
+                rel="noopener"
+                class="cert__action"
+                >View</a
+              >
+            </div>
+            <div class="cert" data-reveal-paper data-delay="3">
+              <div class="cert__icon">
+                <svg
+                  width="36"
+                  height="36"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="1.5"
+                >
+                  <rect x="3" y="3" width="18" height="18" rx="2" />
+                  <path d="M7 12h10" />
+                  <path d="M12 17h5" />
+                </svg>
+              </div>
+              <h3 class="cert__title">AI &amp; Machine Learning</h3>
+              <p class="cert__issuer">
+                Simplilearn / Sprint Microsoft &mdash; Jun 2026
+              </p>
+              <a
+                href="certs/sprint-microsoft.pdf"
+                target="_blank"
+                rel="noopener"
+                class="cert__action"
+                >View</a
+              >
+            </div>
+            <div class="cert" data-reveal-paper data-delay="4">
+              <div class="cert__icon">
+                <svg
+                  width="36"
+                  height="36"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="1.5"
+                >
+                  <path d="M12 2v20M2 12h20" />
+                  <circle cx="12" cy="12" r="10" />
+                </svg>
+              </div>
+              <h3 class="cert__title">Introduction to Generative AI Studio</h3>
+              <p class="cert__issuer">
+                Google Cloud / Simplilearn &mdash; Jun 2026
+              </p>
+              <a
+                href="certs/google-cloud-ai.pdf"
+                target="_blank"
+                rel="noopener"
+                class="cert__action"
+                >View</a
+              >
+            </div>
+            <div class="cert" data-reveal-paper data-delay="5">
+              <div class="cert__icon">
+                <svg
+                  width="36"
+                  height="36"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="1.5"
+                >
+                  <path d="M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z" />
+                </svg>
+              </div>
+              <h3 class="cert__title">GitHub Copilot Fundamentals</h3>
+              <p class="cert__issuer">GitHub</p>
+              <a
+                href="certs/aws.pdf"
+                target="_blank"
+                rel="noopener"
+                class="cert__action"
+                >View</a
+              >
+            </div>
+            <div class="cert" data-reveal-paper data-delay="6">
+              <div class="cert__icon">
+                <svg
+                  width="36"
+                  height="36"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="1.5"
+                >
+                  <polygon
+                    points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"
+                  />
+                </svg>
+              </div>
+              <h3 class="cert__title">Emerging Technologies Diploma</h3>
+              <p class="cert__issuer">
+                NTI &amp; ITIDA &mdash; Jul&ndash;Aug 2025
+              </p>
+              <a
+                href="certs/nti-itida.pdf"
+                target="_blank"
+                rel="noopener"
+                class="cert__action"
+                >View</a
+              >
+            </div>
+            <div class="cert" data-reveal-paper data-delay="7">
+              <div class="cert__icon">
+                <svg
+                  width="36"
+                  height="36"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="1.5"
+                >
+                  <path d="M12 2L2 7l10 5 10-5-10-5z" />
+                  <path d="M2 17l10 5 10-5" />
+                  <path d="M2 12l10 5 10-5" />
+                </svg>
+              </div>
+              <h3 class="cert__title">AWS Cloud Practitioner</h3>
+              <p class="cert__issuer">
+                AWS Training &amp; Certification &mdash; Jun 2026
+              </p>
+              <a
+                href="certs/anthropic.pdf"
+                target="_blank"
+                rel="noopener"
+                class="cert__action"
+                >View</a
+              >
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <div class="section-transition" aria-hidden="true">
+        <div class="section-transition__glow"></div>
+        <div class="section-transition__line"></div>
+      </div>
+
+      <!-- ===== ABOUT ===== -->
+      <section id="about" class="section about">
+        <div class="container">
+          <header class="section__head" data-reveal-head>
+            <span class="section__idx">04</span>
+            <h2 class="section__title">About Me</h2>
+            <div class="section__rule"></div>
+          </header>
+          <div class="about__grid">
+            <div class="about__journal" data-reveal-slide-left>
+              <div class="journal__entry">
+                <span class="journal__chapter"
+                  >Chapter I &mdash; The Beginning</span
+                >
+                <p class="journal__body">
+                  I'm a passionate Front-End Developer who believes that every
+                  pixel tells a story. With a deep love for clean architecture
+                  and cinematic aesthetics, I transform ideas into immersive
+                  digital experiences.
+                </p>
+                <p class="journal__body">
+                  My journey in web development started with curiosity and grew
+                  into a craft I pursue with relentless dedication. I specialize
+                  in building responsive, performant, and visually stunning
+                  interfaces that leave lasting impressions.
+                </p>
+                <p class="journal__body">
+                  When I'm not writing code, I'm studying design patterns,
+                  exploring new technologies, and pushing the boundaries of
+                  what's possible in the browser.
+                </p>
+                <span class="journal__sig">&mdash; Fares Eldiip</span>
+              </div>
+            </div>
+            <div class="about__stats">
+              <div class="stat" data-reveal-slide-right>
+                <span class="stat__num" data-count="15">0</span>
+                <span class="stat__label">Projects Completed</span>
+              </div>
+              <div class="stat" data-reveal-slide-right data-delay="1">
+                <span class="stat__num" data-count="3">0</span>
+                <span class="stat__label">Years Experience</span>
+              </div>
+              <div class="stat" data-reveal-slide-right data-delay="2">
+                <span class="stat__num" data-count="10">0</span>
+                <span class="stat__label">Happy Clients</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <div class="section-transition" aria-hidden="true">
+        <div class="section-transition__glow"></div>
+        <div class="section-transition__line"></div>
+      </div>
+
+      <!-- ===== CONTACT ===== -->
+      <section id="contact" class="section contact">
+        <div class="container">
+          <header class="section__head" data-reveal-head>
+            <span class="section__idx">05</span>
+            <h2 class="section__title">Contact</h2>
+            <div class="section__rule"></div>
+          </header>
+          <div class="contact__grid">
+            <div class="contact__info" data-reveal-soft>
+              <p class="contact__tagline">
+                Have a project in mind or looking for a dedicated Front-End
+                Developer? I'm always open to discussing new opportunities,
+                creative ideas, or ways to bring your vision to life.
+              </p>
+              <div class="contact__email-row">
+                <a
+                  href="mailto:farseldiip@gmail.com"
+                  class="contact__email-link"
+                >
+                  <svg
+                    width="18"
+                    height="18"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                  >
+                    <rect x="2" y="4" width="20" height="16" rx="2" />
+                    <path d="M22 4L12 13 2 4" />
+                  </svg>
+                  <span>farseldiip@gmail.com</span>
+                </a>
+                <button
+                  type="button"
+                  class="contact__copy"
+                  id="copy-email"
+                  aria-label="Copy email"
+                >
+                  <svg
+                    width="16"
+                    height="16"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                  >
+                    <rect x="9" y="9" width="13" height="13" rx="2" />
+                    <path
+                      d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"
+                    />
+                  </svg>
+                  <span class="contact__copy-tip" id="copy-tip">Copied!</span>
+                </button>
+              </div>
+              <div class="contact__socials">
+                <a
+                  href="https://www.linkedin.com/in/fares-eldiip2244"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="btn btn--icon magnetic"
+                  aria-label="LinkedIn"
+                >
+                  <svg
+                    width="22"
+                    height="22"
+                    viewBox="0 0 24 24"
+                    fill="currentColor"
+                  >
+                    <path
+                      d="M20.45 20.45h-3.55v-5.57c0-1.33-.03-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 110-4.12 2.06 2.06 0 010 4.12zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.73C24 .77 23.2 0 22.22 0z"
+                    />
+                  </svg>
+                </a>
+                <a
+                  href="mailto:farseldiip@gmail.com"
+                  class="btn btn--icon magnetic"
+                  aria-label="Email"
+                >
+                  <svg
+                    width="22"
+                    height="22"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                  >
+                    <rect x="2" y="4" width="20" height="16" rx="2" />
+                    <path d="M22 4L12 13 2 4" />
+                  </svg>
+                </a>
+              </div>
+            </div>
+            <form
+              class="contact__form"
+              id="contact-form"
+              data-reveal-soft
+              data-delay="1"
+            >
+              <div class="field">
+                <input
+                  type="text"
+                  id="fname"
+                  name="name"
+                  class="field__input"
+                  placeholder=" "
+                  required
+                  autocomplete="name"
+                />
+                <label for="fname" class="field__label">Your Name</label>
+                <span class="field__bar"></span>
+              </div>
+              <div class="field">
+                <input
+                  type="email"
+                  id="femail"
+                  name="email"
+                  class="field__input"
+                  placeholder=" "
+                  required
+                  autocomplete="email"
+                />
+                <label for="femail" class="field__label">Your Email</label>
+                <span class="field__bar"></span>
+              </div>
+              <div class="field">
+                <textarea
+                  id="fmessage"
+                  name="message"
+                  class="field__input field__textarea"
+                  placeholder=" "
+                  rows="5"
+                  required
+                ></textarea>
+                <label for="fmessage" class="field__label">Your Message</label>
+                <span class="field__bar"></span>
+              </div>
+              <input type="hidden" id="ftime" name="time" />
+              <button type="submit" class="btn btn--primary btn--full magnetic">
+                <span class="btn__bg"></span>
+                <span class="btn__label">Send Message</span>
+                <svg
+                  class="btn__arrow"
+                  width="16"
+                  height="16"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                >
+                  <path d="M5 12h14M12 5l7 7-7 7" />
+                </svg>
+              </button>
+              <div
+                class="contact__form-success"
+                id="form-success"
+                role="alert"
+                aria-live="polite"
+              >
+                <svg
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                >
+                  <path d="M22 11.08V12a10 10 0 11-5.93-9.14" />
+                  <polyline points="22 4 12 14.01 9 11.01" />
+                </svg>
+                <span>Message sent successfully!</span>
+              </div>
+              <div
+                class="contact__form-error"
+                id="form-error"
+                role="alert"
+                aria-live="polite"
+              >
+                <svg
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                >
+                  <circle cx="12" cy="12" r="10" />
+                  <line x1="15" y1="9" x2="9" y2="15" />
+                  <line x1="9" y1="9" x2="15" y2="15" />
+                </svg>
+                <span id="form-error-text">Something went wrong. Please try again.</span>
+              </div>
+            </form>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="container">
+        <div class="footer__inner">
+          <span class="footer__copy"
+            >&copy; 2026 Fares Eldiip. All rights reserved.</span
+          >
+          <div class="footer__socials">
+            <a
+              href="https://www.linkedin.com/in/fares-eldiip2244"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="footer__social"
+              aria-label="LinkedIn"
+            >
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M20.45 20.45h-3.55v-5.57c0-1.33-.03-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 110-4.12 2.06 2.06 0 010 4.12zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.73C24 .77 23.2 0 22.22 0z"/>
+              </svg>
+            </a>
+            <a
+              href="mailto:farseldiip@gmail.com"
+              class="footer__social"
+              aria-label="Email"
+            >
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="2" y="4" width="20" height="16" rx="2"/>
+                <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/>
+              </svg>
+            </a>
+            <a
+              href="https://github.com/fareseldiip"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="footer__social"
+              aria-label="GitHub"
+            >
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+              </svg>
+            </a>
+          </div>
+          <span class="footer__tag">Crafted with precision.</span>
+        </div>
+      </div>
+    </footer>
+
+    <!-- External libs -->
+    <script
+      defer
+      src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"
+    ></script>
+    <script
+      defer
+      src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"
+    ></script>
+    <script
+      defer
+      src="https://unpkg.com/lenis@1.1.18/dist/lenis.min.js"
+    ></script>
+    <script
+      defer
+      src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"
+    ></script>
+
+    <!-- App modules -->
+    <script defer src="scripts/utils/helpers.js"></script>
+    <script defer src="scripts/utils/smoothscroll.js"></script>
+    <script defer src="scripts/components/loader.js"></script>
+    <script defer src="scripts/components/navbar.js"></script>
+    <script defer src="scripts/components/typing.js"></script>
+    <script defer src="scripts/components/cursor.js"></script>
+    <script defer src="scripts/components/magnetic.js"></script>
+    <script defer src="scripts/components/environment.js"></script>
+    <script defer src="scripts/animations/hero.js"></script>
+    <script defer src="scripts/animations/sections.js"></script>
+    <script defer src="scripts/animations/cards.js"></script>
+    <script defer src="scripts/animations/projects-showcase.js"></script>
+    <script defer src="scripts/components/embers-bg.js"></script>
+    <script defer src="scripts/app.js"></script>
+  </body>
+</html>
